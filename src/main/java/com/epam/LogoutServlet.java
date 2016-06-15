@@ -15,14 +15,12 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
         request.getRequestDispatcher("link.html").include(request, response);
 
         HttpSession session = request.getSession();
         session.invalidate();
-
+        
         out.print("You are successfully logged out!");
-
         out.close();
     }
 }

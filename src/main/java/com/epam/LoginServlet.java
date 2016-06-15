@@ -20,15 +20,11 @@ public class LoginServlet extends HttpServlet {
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
 
-        if (!name.isEmpty() && !surname.isEmpty()) {
-            HttpSession session = request.getSession();
-            session.setAttribute("name", name);
-            session.setAttribute("surname", surname);
-            response.sendRedirect("ProfileServlet");
-        } else {
-            out.print("Sorry, field of name or surname didn't fill!");
-            request.getRequestDispatcher("login.html").include(request, response);
-        }
+        HttpSession session = request.getSession();
+        session.setAttribute("name", name);
+        session.setAttribute("surname", surname);
+        response.sendRedirect("ProfileServlet");
+
         out.close();
     }
 }
